@@ -110,16 +110,27 @@ public class GunShooting : MonoBehaviour
 
 
     void Shoot()
-    {
-        // Cr�er la balle � la position de spawn
-        GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
-        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+{
+    GameObject bullet = ObjectPoolManager.Instance.GetBulletFromPool();
 
-        // Appliquer une force � la balle pour simuler le tir
-        rb.AddForce(bulletSpawn.forward * shootingForce);
+    // Reset et activation de la balle
+    bullet.transform.position = bulletSpawn.position;
+    bullet.transform.rotation = bulletSpawn.rotation;
+    bullet.SetActive(true);
 
-        // D�truire la balle apr�s 5 secondes pour nettoyer la sc�ne
-        Destroy(bullet, 5f);
-    }
+    Rigidbody rb = bullet.GetComponent<Rigidbody>();
+    rb.linearVelocity = Vector3.zero; // reset vitesse
+    rb.angularVelocity = Vector3.zero;
+
+    rb.AddForce(bulletSpawn.forward * shootingForce);
+
+    StartCoroutine(DisableBulletAfterDelay(bullet, 5f));
+}
+    IEnumerator DisableBulletAfterDelay(GameObject bullet, float time)
+{
+    yield return new WaitForSeconds(time);
+    bullet.SetActive(false);
+}
+
 
 }

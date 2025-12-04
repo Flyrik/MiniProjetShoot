@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class TargetSpawner : MonoBehaviour
 {
-    public GameObject targetPrefab; // Pr�fabriqu� de la cible
-    public float spawnInterval = 8f; // Temps entre les apparitions de cibles
-    public float spawnRange = 10f; // Plage de spawn al�atoire
+    public float spawnInterval = 8f;
+    public float spawnRange = 10f;
+    public Vector3 fixedSpawnPosition = Vector3.zero; // option pour spawn fixe
+    public bool useRandomPosition = true;
 
     private void Start()
     {
@@ -13,13 +14,64 @@ public class TargetSpawner : MonoBehaviour
 
     void SpawnTarget()
     {
-        // G�n�rer une position al�atoire pour la cible
-        Vector3 spawnPosition = new Vector3(
-            Random.Range(-spawnRange, spawnRange),
-            3f, // Hauteur de spawn
-            Random.Range(-spawnRange,8)
-        );
+        GameObject target = TargetPoolManager.Instance.GetTargetFromPool();
 
-        Instantiate(targetPrefab, spawnPosition,Quaternion.Euler(0f, 90f, 0f));
+        // Remise à zéro de l'état de la cible
+        ResetTarget(target);
+
+        // Position
+        if (useRandomPosition)
+        {
+            target.transform.position = new Vector3(
+                Random.Range(-spawnRange, spawnRange),
+                3f,
+                Random.Range(-spawnRange, 8f)
+            );
+        }
+        else
+        {
+            target.transform.position = fixedSpawnPosition;
+        }
+
+        // Orientation
+        target.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+
+        // Activer la cible
+        target.SetActive(true);
+    }
+
+    void ResetTarget(GameObject target)
+    {
+        // Remettre les animations, matériaux, collisions...
+        target.SetActive(false); // on désactive temporairement pour reset
+        target.SetActive(true);
+
+        // Ex : remettre Rigidbody à zéro si utilisé
+        Rigidbody rb = target.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+
+        // Ex : réinitialiser Animator
+        Animator anim = target.GetComponent<Animator>();
+        if (anim != null)
+        {
+            anim.Rebind();
+            anim.Update(0f);
+        }
+
+        // Ex : réinitialiser matériau ou couleur
+        Renderer rend = target.GetComponent<Renderer>();
+        if (rend != null)
+        {
+            rend.material.color = Color.white; // par défaut
+        }
+
+        // Collider actif
+        Collider col = target.GetComponent<Collider>();
+        if (col != null)
+            col.enabled = true;
     }
 }

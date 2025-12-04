@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections;
 public class Target : MonoBehaviour
 {
     public GameObject particleEffectPrefab;  // Prefab de l'effet de particules (explosion, fum�e, etc.)
@@ -17,11 +17,18 @@ public class Target : MonoBehaviour
             if (explosionSound != null)
             {
                 explosionSound.Play();
+                explosionSound.volume = 3f;
             }
 
 
-            // D�truire la cible avec un d�lai pour permettre aux particules de se jouer
-            Destroy(gameObject, destroyDelay);
+            
+            StartCoroutine(DeactivateAfterDelay(0.1f));
         }
     }
+    
+IEnumerator DeactivateAfterDelay(float delay)
+{
+    yield return new WaitForSeconds(delay);
+    gameObject.SetActive(false);
+}
 }
