@@ -11,7 +11,9 @@ public class Target : MonoBehaviour
         if (collision.gameObject.CompareTag("Bullet"))
         {
             // D�clencher l'effet de particules � l'endroit o� la cible a �t� touch�e
-            Instantiate(particleEffectPrefab, transform.position, Quaternion.identity);
+            //Instantiate(particleEffectPrefab, transform.position, Quaternion.identity);
+            FXManager.Instance.SpawnFX("Explosion", transform.position, Quaternion.identity);
+
 
             // Jouer le son d'explosion
             if (explosionSound != null)
