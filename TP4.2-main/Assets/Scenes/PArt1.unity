@@ -93,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 77756cfe4dec53c4b87b0895647e1a50, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 3e8997e5759de91438131d2d89cbb9a6, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -1032,7 +1032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 878e0d458427a2a4cbf8dde77b454768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::targetmanagerp1
-  targetPrefab: {fileID: 8320529752287462902, guid: 251b6a069b1d18d4f9cba89b571b7088, type: 3}
+  targetPrefab: {fileID: 8320529752287462902, guid: 7e928b8920800524896a9e516d4ff196, type: 3}
   spawnInterval: 8
   spawnRange: 10
 --- !u!1 &916445058

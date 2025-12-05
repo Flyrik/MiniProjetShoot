@@ -16,12 +16,22 @@ MonoBehaviour:
   m_GUID: 01f63b2904fc7b34da5ce68a139dfd66
   m_SerializeEntries:
   - m_GUID: 339a2a9fc7f08cd44a9cb3bbd4dd9347
-    m_Address: Assets/PArticule/Explosion Opti.prefab
+    m_Address: FX_Quest/Explosion
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3b7a9e0a8d5f20641884ee369344ad0a
-    m_Address: Assets/PArticule/MuzzOpti.prefab
+    m_Address: FX_Quest/MuzzleFlash
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 684a340b7a2a6ed4c924aed8737c1d67
+    m_Address: FX_Quest/herbe
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f7031040ae3636a4d9d69d829f505454
+    m_Address: FX_Quest/Gun
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

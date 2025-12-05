@@ -16,12 +16,22 @@ MonoBehaviour:
   m_GUID: 631dca4d9d38b5a40a8f23cecdaf53c3
   m_SerializeEntries:
   - m_GUID: 4d6a2ff0a8d3aab4ab4433950c036d6b
-    m_Address: Assets/PArticule/Explosion.prefab
+    m_Address: FX_PCVR/Explosion
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8ed6b8550a1b60746b95686fe374cc04
-    m_Address: Assets/PArticule/MuzzleFlash.prefab
+    m_Address: FX_PCVR/MuzzleFlash
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a223894574c6f7d4eab1e5253a0c287a
+    m_Address: FX_PCVR/Gun
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ff7cd852313e4914396446d7fc4419b6
+    m_Address: FX_PCVR/herbe
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
