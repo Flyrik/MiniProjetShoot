@@ -38,6 +38,7 @@ public class TargetSpawner : MonoBehaviour
 
         // Activer la cible
         target.SetActive(true);
+        
     }
 
     void ResetTarget(GameObject target)

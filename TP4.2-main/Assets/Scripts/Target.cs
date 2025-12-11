@@ -21,7 +21,8 @@ public class Target : MonoBehaviour
                 explosionSound.Play();
                 explosionSound.volume = 3f;
             }
-
+            GameplayManager.Instance.AddScore(10); 
+                 
 
             
             StartCoroutine(DeactivateAfterDelay(0.1f));
