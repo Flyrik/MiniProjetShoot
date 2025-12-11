@@ -120,19 +120,20 @@ public class GunShooting : MonoBehaviour
     bullet.transform.rotation = bulletSpawn.rotation;
     bullet.SetActive(true);
 
+    ProjectilePoolManager.Instance.RegisterProjectile(bullet);
+
     Rigidbody rb = bullet.GetComponent<Rigidbody>();
     rb.linearVelocity = Vector3.zero; // reset vitesse
     rb.angularVelocity = Vector3.zero;
 
     rb.AddForce(bulletSpawn.forward * shootingForce);
 
-    StartCoroutine(DisableBulletAfterDelay(bullet, 5f));
+   // StartCoroutine(DisableBulletAfterDelay(bullet, 5f));
+//}
+   /// IEnumerator DisableBulletAfterDelay(GameObject bullet, float time)
+//{
+   // yield return new WaitForSeconds(time);
+  //  bullet.SetActive(false);
 }
-    IEnumerator DisableBulletAfterDelay(GameObject bullet, float time)
-{
-    yield return new WaitForSeconds(time);
-    bullet.SetActive(false);
-}
-
 
 }
