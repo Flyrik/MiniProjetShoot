@@ -6,6 +6,9 @@ public class GameplayManager : MonoBehaviour
 
     public int currentScore;
 
+    public int maxTargets = 3;     
+    public int currentTargets = 0;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void Awake()
@@ -23,6 +26,18 @@ public class GameplayManager : MonoBehaviour
     void Start()
     {
         currentScore = 0;
+    }
+
+    public void RegisterTargetSpawn()
+    {
+        currentTargets++;
+    }
+
+    public void RegisterTargetDespawn()
+    {
+        currentTargets--;
+        if (currentTargets < 0)
+            currentTargets = 0;
     }
 
     // Update is called once per frame

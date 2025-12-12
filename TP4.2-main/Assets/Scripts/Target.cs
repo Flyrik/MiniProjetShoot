@@ -34,4 +34,11 @@ IEnumerator DeactivateAfterDelay(float delay)
     yield return new WaitForSeconds(delay);
     gameObject.SetActive(false);
 }
+
+void OnDisable()
+    {
+        // IMPORTANT : informer le GameplayManager qu'une cible disparaît
+        if (GameplayManager.Instance != null)
+            GameplayManager.Instance.RegisterTargetDespawn();
+    }
 }

@@ -1,15 +1,15 @@
 using UnityEngine;
-
+using System.Collections;
 public class TargetSpawner : MonoBehaviour
 {
-    public float spawnInterval = 8f;
+    public float spawnInterval = 3f;
     public float spawnRange = 10f;
     public Vector3 fixedSpawnPosition = Vector3.zero; // option pour spawn fixe
     public bool useRandomPosition = true;
 
     private void Start()
     {
-        InvokeRepeating(nameof(SpawnTarget), 0f, spawnInterval);
+        StartCoroutine(SpawnLoop());
     }
 
     void SpawnTarget()
@@ -38,7 +38,22 @@ public class TargetSpawner : MonoBehaviour
 
         // Activer la cible
         target.SetActive(true);
+        GameplayManager.Instance.RegisterTargetSpawn();
         
+    }
+
+    IEnumerator SpawnLoop()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(spawnInterval);
+
+            // Vérifie si on peut spawn une cible
+            if (GameplayManager.Instance.currentTargets < GameplayManager.Instance.maxTargets)
+            {
+                SpawnTarget();
+            }
+        }
     }
 
     void ResetTarget(GameObject target)
@@ -53,7 +68,7 @@ public class TargetSpawner : MonoBehaviour
         {
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
-        }
+        }   
 
         // Ex : réinitialiser Animator
         Animator anim = target.GetComponent<Animator>();
